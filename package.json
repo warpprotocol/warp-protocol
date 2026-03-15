@@ -1,0 +1,54 @@
+{
+  "name": "warp-protocol",
+  "version": "0.4.0",
+  "private": true,
+  "description": "AI agent verifier on Solana. Classifies agents as AUTONOMOUS, HYBRID, or HUMAN.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/warp-protocol/warp-protocol.git"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@8.15.4",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:unit": "vitest run",
+    "test:watch": "vitest watch",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md}\"",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "husky": "^9.0.6",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "tsup": "^8.0.1",
+    "turbo": "^1.12.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}
