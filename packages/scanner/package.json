@@ -1,0 +1,29 @@
+{
+  "name": "@warp-protocol/scanner",
+  "version": "0.4.0",
+  "description": "Solana transaction listener and signal extraction for Warp Protocol",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.89.1",
+    "bs58": "^5.0.0",
+    "pino": "^8.17.2",
+    "eventemitter3": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "license": "MIT"
+}
