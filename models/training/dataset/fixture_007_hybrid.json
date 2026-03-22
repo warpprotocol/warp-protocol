@@ -1,0 +1,14 @@
+{
+  "agent": "Agent00711111111111111111111111111111111111",
+  "classification": "HYBRID",
+  "confidence": 0.52,
+  "features": {
+    "txFrequencyEntropy": 2.55,
+    "responseLatencyP50": 2.6,
+    "instructionDiversity": 0.55,
+    "decisionVariance": 0.38,
+    "timeOfDayEntropy": 1.91
+  },
+  "slot": 290700000,
+  "timestamp": "2026-04-08T12:00:00Z"
+}
