@@ -1,0 +1,14 @@
+{
+  "agent": "Agent01211111111111111111111111111111111111",
+  "classification": "AUTONOMOUS",
+  "confidence": 0.82,
+  "features": {
+    "txFrequencyEntropy": 3.3,
+    "responseLatencyP50": 4.1,
+    "instructionDiversity": 0.8,
+    "decisionVariance": 0.58,
+    "timeOfDayEntropy": 2.56
+  },
+  "slot": 291200000,
+  "timestamp": "2026-04-09T12:00:00Z"
+}
