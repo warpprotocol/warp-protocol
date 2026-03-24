@@ -1,0 +1,14 @@
+{
+  "address": "ExampleHuman111111111111111111111111111111",
+  "classification": "HUMAN",
+  "confidence": 0.18,
+  "features": {
+    "txFrequencyEntropy": 3.2,
+    "responseLatencyP50": 1.1
+  },
+  "attestation": {
+    "account": "WarpAttest999999999999999999999999999999",
+    "slot": 298000000
+  },
+  "timestamp": "2026-04-09T12:00:00Z"
+}
