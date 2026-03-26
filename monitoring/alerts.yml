@@ -1,0 +1,13 @@
+groups:
+  - name: warp-protocol
+    rules:
+      - alert: HighClassifierLatency
+        expr: classifier_inference_duration_seconds > 2
+        for: 5m
+        labels:
+          severity: warning
+      - alert: VerdictBacklog
+        expr: verdict_queue_depth > 100
+        for: 10m
+        labels:
+          severity: critical
