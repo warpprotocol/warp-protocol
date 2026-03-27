@@ -1,0 +1,23 @@
+[package]
+name = "warp-attestation"
+version = "0.4.0"
+description = "On-chain attestation program for Warp Protocol agent verdicts"
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "warp_attestation"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.29.0"
+
+[dev-dependencies]
+anchor-client = "0.29.0"
