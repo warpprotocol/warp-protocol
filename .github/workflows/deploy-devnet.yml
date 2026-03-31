@@ -1,0 +1,11 @@
+name: Deploy Devnet
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: AnchorLabs/setup-anchor@v1
+      - run: anchor build
+      - run: anchor deploy --provider.cluster devnet
