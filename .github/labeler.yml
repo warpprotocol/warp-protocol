@@ -1,0 +1,15 @@
+scanner:
+  - changed-files:
+    - any-glob-to-any-file: 'packages/scanner/**'
+classifier:
+  - changed-files:
+    - any-glob-to-any-file: 'packages/classifier/**'
+rust:
+  - changed-files:
+    - any-glob-to-any-file: 'programs/**'
+python:
+  - changed-files:
+    - any-glob-to-any-file: 'models/**'
+ci:
+  - changed-files:
+    - any-glob-to-any-file: '.github/**'
