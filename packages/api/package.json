@@ -1,0 +1,34 @@
+{
+  "name": "@warp-protocol/api",
+  "version": "0.4.0",
+  "description": "REST and WebSocket API server for Warp Protocol",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm --watch --onSuccess \"node dist/index.js\"",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo"
+  },
+  "dependencies": {
+    "@warp-protocol/classifier": "workspace:*",
+    "@warp-protocol/scanner": "workspace:*",
+    "@warp-protocol/verdict-engine": "workspace:*",
+    "fastify": "^4.25.2",
+    "@fastify/websocket": "^8.3.1",
+    "@fastify/cors": "^8.5.0",
+    "@fastify/rate-limit": "^9.1.0",
+    "pino": "^8.17.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "license": "MIT"
+}
