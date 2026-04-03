@@ -1,0 +1,27 @@
+{
+  "name": "@warp-protocol/sdk",
+  "version": "0.4.0",
+  "description": "Client SDK for querying Warp Protocol agent verdicts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo"
+  },
+  "dependencies": {
+    "undici": "^6.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "license": "MIT",
+  "keywords": ["solana", "ai-agent", "verification", "classification", "warp-protocol"]
+}
