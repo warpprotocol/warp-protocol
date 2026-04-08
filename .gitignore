@@ -1,0 +1,95 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Turborepo
+.turbo/
+
+# Environment
+.env
+.env.local
+.env.production
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.js.map
+*.d.ts.map
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Rust / Anchor
+target/
+programs/**/target/
+**/*.rs.bk
+Cargo.lock
+test-ledger/
+.anchor/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+.eggs/
+dist/
+venv/
+.venv/
+env/
+.env/
+*.whl
+.pytest_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# ML models and data
+models/training/dataset/*.csv
+models/training/dataset/*.parquet
+models/training/checkpoints/
+models/training/runs/
+models/training/exports/
+*.onnx
+*.pt
+*.pth
+*.pkl
+*.h5
+*.safetensors
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Misc
+*.tgz
+*.tar.gz
+.cache/
+tmp/
+temp/

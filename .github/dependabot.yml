@@ -1,0 +1,92 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    reviewers:
+      - lux-ops
+      - warpcore
+    labels:
+      - dependencies
+      - javascript
+    groups:
+      typescript-minor:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: npm
+    directory: "/packages/scanner"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    reviewers:
+      - warpcore
+
+  - package-ecosystem: npm
+    directory: "/packages/classifier"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    reviewers:
+      - neural-k
+
+  - package-ecosystem: npm
+    directory: "/packages/sdk"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    reviewers:
+      - lux-ops
+
+  - package-ecosystem: cargo
+    directory: "/programs/warp-attestation"
+    schedule:
+      interval: weekly
+      day: tuesday
+    open-pull-requests-limit: 5
+    reviewers:
+      - 0xverifier
+    labels:
+      - dependencies
+      - rust
+
+  - package-ecosystem: pip
+    directory: "/models/training"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    reviewers:
+      - neural-k
+    labels:
+      - dependencies
+      - python
+
+  - package-ecosystem: pip
+    directory: "/models/inference"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    reviewers:
+      - neural-k
+    labels:
+      - dependencies
+      - python
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    reviewers:
+      - lux-ops
+    labels:
+      - dependencies
+      - ci

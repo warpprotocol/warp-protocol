@@ -1,0 +1,42 @@
+# Warp Protocol CODEOWNERS
+# Each line maps a path pattern to one or more GitHub usernames.
+# The last matching pattern takes precedence.
+
+# Default: project lead reviews everything
+* @warpcore
+
+# Scanner package
+packages/scanner/ @warpcore
+
+# Classifier package
+packages/classifier/ @neural-k @warpcore
+
+# Verdict engine
+packages/verdict-engine/ @warpcore
+
+# API server
+packages/api/ @warpcore @lux-ops
+
+# SDK
+packages/sdk/ @lux-ops
+
+# Anchor on-chain program
+programs/warp-attestation/ @0xverifier
+
+# ML models and training
+models/ @neural-k
+
+# CI/CD and infrastructure
+.github/ @lux-ops
+Makefile @lux-ops
+Dockerfile* @lux-ops
+scripts/ @lux-ops
+
+# Documentation
+docs/ @warpcore @neural-k
+
+# Root configuration
+package.json @warpcore @lux-ops
+turbo.json @warpcore @lux-ops
+tsconfig.json @warpcore
+.env.example @lux-ops

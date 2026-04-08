@@ -1,0 +1,130 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "20"
+  RUST_VERSION: "1.75.0"
+  PYTHON_VERSION: "3.11"
+  SOLANA_VERSION: "1.17.16"
+
+jobs:
+  typescript:
+    name: TypeScript (lint + test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm test:unit
+        env:
+          SOLANA_RPC_URL: https://api.devnet.solana.com
+
+      - name: Upload coverage
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-typescript
+          path: coverage/
+
+  rust:
+    name: Rust (clippy + test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          components: clippy, rustfmt
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            programs/warp-attestation/target
+          key: rust-${{ runner.os }}-${{ hashFiles('**/Cargo.toml') }}
+          restore-keys: rust-${{ runner.os }}-
+
+      - name: Install Solana CLI
+        run: |
+          sh -c "$(curl -sSfL https://release.solana.com/v${{ env.SOLANA_VERSION }}/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+
+      - name: Install Anchor CLI
+        run: cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
+
+      - name: Check formatting
+        run: cargo fmt --manifest-path programs/warp-attestation/Cargo.toml -- --check
+
+      - name: Clippy
+        run: cargo clippy --manifest-path programs/warp-attestation/Cargo.toml -- -D warnings
+
+      - name: Test
+        run: cargo test --manifest-path programs/warp-attestation/Cargo.toml
+
+  python:
+    name: Python (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: |
+            models/training/requirements.txt
+            models/inference/requirements.txt
+
+      - name: Install training dependencies
+        run: pip install -r models/training/requirements.txt
+
+      - name: Install inference dependencies
+        run: pip install -r models/inference/requirements.txt
+
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          flake8 models/ --max-line-length=100
+
+      - name: Type check with mypy
+        run: |
+          pip install mypy
+          mypy models/training/train.py models/inference/server.py --ignore-missing-imports
+
+      - name: Test training
+        run: cd models/training && pytest -v
+
+      - name: Test inference
+        run: cd models/inference && pytest -v
