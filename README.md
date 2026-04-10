@@ -25,6 +25,7 @@ on-chain attestations with the evidence attached.
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)]()
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 
+[![npm](https://img.shields.io/npm/v/warp-protocol-sdk?color=7DDCB5&label=sdk&logo=npm)](https://www.npmjs.com/package/warp-protocol-sdk)
 [![Agents scanned](https://img.shields.io/badge/agents%20scanned-4.2k+-7DDCB5.svg)]()
 [![Detection rate](https://img.shields.io/badge/detection%20rate-94%25-7DDCB5.svg)]()
 [![Verdicts on-chain](https://img.shields.io/badge/verdicts%20on--chain-1.8k-7DDCB5.svg)]()
@@ -204,11 +205,11 @@ curl -s https://api.warpprotocol.xyz/v1/verdict/AgentProgramId111111111111111111
 ### TypeScript SDK
 
 ```bash
-npm install @warp-protocol/sdk
+npm install warp-protocol-sdk
 ```
 
 ```typescript
-import { WarpClient } from "@warp-protocol/sdk";
+import { WarpClient } from "warp-protocol-sdk";
 
 const warp = new WarpClient();
 
