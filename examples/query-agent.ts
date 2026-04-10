@@ -14,7 +14,7 @@ async function main() {
     process.exit(1);
   }
 
-  const client = new WarpClient({ baseUrl: "https://api.warpprotocol.xyz" });
+  const client = new WarpClient({ baseUrl: "https://api.warpprotocol.tech" });
   const verdict = await client.query(address);
 
   console.log(`agent:          ${verdict.address}`);

@@ -4,7 +4,7 @@
 # Usage:
 #   bash examples/batch-query.sh
 
-curl -s -X POST https://api.warpprotocol.xyz/v1/query \
+curl -s -X POST https://api.warpprotocol.tech/v1/query \
   -H "Content-Type: application/json" \
   -d '{
     "addresses": [

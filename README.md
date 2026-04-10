@@ -198,7 +198,7 @@ Key signal categories:
 ### Query an agent (no install)
 
 ```bash
-curl -s https://api.warpprotocol.xyz/v1/verdict/AgentProgramId111111111111111111111111111 \
+curl -s https://api.warpprotocol.tech/v1/verdict/AgentProgramId111111111111111111111111111 \
   | jq .
 ```
 
@@ -282,7 +282,7 @@ Batch query up to 100 agents.
 WebSocket endpoint. Streams new verdicts in real time.
 
 ```
-wscat -c wss://api.warpprotocol.xyz/v1/feed
+wscat -c wss://api.warpprotocol.tech/v1/feed
 ```
 
 ## Roadmap

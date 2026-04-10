@@ -4,7 +4,7 @@ import json
 import sys
 import urllib.request
 
-BASE = "https://api.warpprotocol.xyz/v1"
+BASE = "https://api.warpprotocol.tech/v1"
 
 def main() -> None:
     if len(sys.argv) < 2:
